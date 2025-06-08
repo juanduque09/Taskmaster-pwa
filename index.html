@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster PWA</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icons/icon-192x192.png">
+    <meta name="theme-color" content="#2196F3">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>TaskMaster</h1>
+            <div class="header-actions">
+                <button id="sync-btn" class="sync-btn" title="Sincronizar">
+                    <img src="icons/sync.png" alt="Sincronizar" class="sync-icon" width="28" height="28" />
+                </button>
+                <div class="connection-status" id="connection-status">
+                    <span class="status-indicator online"></span>
+                    <span class="status-text">Online</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="task-input-section">
+                <div class="input-container">
+                    <input type="text" id="task-input" placeholder="Agregar nueva tarea..." maxlength="100">
+                    <input type="date" id="task-date">
+                    <input type="time" id="task-time">
+                    <select id="priority-select">
+                        <option value="low">Baja</option>
+                        <option value="medium" selected>Media</option>
+                        <option value="high">Alta</option>
+                    </select>
+                    <button id="add-task-btn" class="add-btn">
+                        <img src="icons/add-192x192.png" alt="Agregar" width="20" height="20" style="vertical-align: middle;">
+                        Agregar
+                    </button>
+                </div>
+            </section>
+
+            <section class="filters-section">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Todas</button>
+                    <button class="filter-btn" data-filter="pending">Pendientes</button>
+                    <button class="filter-btn" data-filter="completed">Completadas</button>
+                </div>
+            </section>
+
+            <section class="tasks-section">
+                <div id="tasks-container" class="tasks-grid">
+                    <!-- Las tareas se cargarán dinámicamente -->
+                    <!-- Ejemplo de tarea estática (puedes borrar esto si tu JS las genera) -->
+                    <div class="task-card">
+                        <div class="task-header">
+                            <span class="task-text">Ejemplo de tarea</span>
+                            <span class="priority-badge">MEDIA</span>
+                        </div>
+                        <div class="task-actions">
+                            <button class="task-btn complete-btn">
+                                <img src="icons/check-192x192.png" alt="Completar" width="20" height="20" style="vertical-align: middle; margin-right: 4px;">
+                                Completar
+                            </button>
+                            <button class="task-btn delete-btn">
+                                <img src="icons/trash-192x192.png" alt="Eliminar" width="20" height="20" style="vertical-align: middle; margin-right: 4px;">Eliminar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="empty-state" class="empty-state hidden">
+                    <div class="empty-icon">
+                        <img src="icons/list-192x192.png" alt="Sin tareas" style="width:64px; height:64px;" />
+                    </div>
+                    <h3>No hay tareas</h3>
+                    <p>Agrega tu primera tarea para comenzar</p>
+                </div>
+            </section>
+        </main>
+
+        <div id="install-prompt" class="install-prompt hidden">
+            <div class="install-content">
+                <h3>¡Instala TaskMaster!</h3>
+                <p>Accede rápidamente desde tu escritorio o pantalla de inicio</p>
+                <div class="install-actions">
+                    <button id="install-btn" class="install-btn">Instalar</button>
+                    <button id="dismiss-btn" class="dismiss-btn">Ahora no</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="notification" class="notification hidden">
+            <span id="notification-text"></span>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
