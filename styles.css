@@ -172,7 +172,7 @@ body {
     color: white;
     border: none;
     border-radius: var(--border-radius);
-    min-width: 110px; /* Cambia width: 50px por min-width */
+    min-width: 110px;
     font-size: 1.1rem;
     cursor: pointer;
     transition: var(--transition);
